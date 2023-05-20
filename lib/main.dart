@@ -24,13 +24,17 @@ class _MyHomePage extends StatelessWidget {
       ),
       // coloumn is a widget that takes as much width as much its children needs
       body: Column(
+        // there are two type of allignment main axis and cross axis
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          // for container we can fix it our self
+          // for container we can fix it our self 
           Container(
             width: double.infinity,
               child: Card(
                   color: Colors.blue, child: Text("Chart!"), elevation: 5)),
           Card(
+            color: Colors.red,
             child: Text("List of Tx"),
           )
         ],
