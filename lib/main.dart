@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './transactions.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -16,7 +17,9 @@ class MyApp extends StatelessWidget {
 }
 
 class _MyHomePage extends StatelessWidget {
-     List<Transactions>transactions = [Transactions(id: 1, title: "new shoes", amount: 2000, date: DateTime.now())];
+  List<Transactions> transactions = [
+    Transactions(id: 1, title: "new shoes", amount: 2000, date: DateTime.now())
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,18 +32,37 @@ class _MyHomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          // for container we can fix it our self 
+          // for container we can fix it our self
           Container(
-            width: double.infinity,
+              width: double.infinity,
               child: Card(
                   color: Colors.blue, child: Text("Chart!"), elevation: 5)),
-        Column(
-          // here we cant maually make cards becuse this would be changed by user so we will map transactions here and then print the data 
-          children: transactions.map((tx){
-          return Card(child: Text(tx.title),) 
-          }).toList(),
-          // here  to list helps to convert iterater to a list
-        )
+          Column(
+            // here we cant maually make cards becuse this would be changed by user so we will map transactions here and then print the data
+            children: transactions.map((tx) {
+              return Card(
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.symmetric(
+                        horizontal: 15,
+                        vertical: 10,
+                      ),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black, width: 2)),
+                         padding: EdgeInsets.all(10), 
+                      child: Text((tx.amount).toString()),
+                    ),
+                    Column(children: <Widget>[
+                      Text(tx.title),
+                      Text(tx.date.toString()),
+                    ])
+                  ],
+                ),
+              );
+            }).toList(),
+            // here  to list helps to convert iterater to a list
+          )
         ],
       ),
     );
