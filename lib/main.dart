@@ -34,10 +34,13 @@ class _MyHomePage extends StatelessWidget {
             width: double.infinity,
               child: Card(
                   color: Colors.blue, child: Text("Chart!"), elevation: 5)),
-          Card(
-            color: Colors.red,
-            child: Text("List of Tx"),
-          )
+        Column(
+          // here we cant maually make cards becuse this would be changed by user so we will map transactions here and then print the data 
+          children: transactions.map((tx){
+          return Card(child: Text(tx.title),) 
+          }).toList(),
+          // here  to list helps to convert iterater to a list
+        )
         ],
       ),
     );
