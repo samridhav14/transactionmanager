@@ -18,7 +18,8 @@ class MyApp extends StatelessWidget {
 
 class _MyHomePage extends StatelessWidget {
   List<Transactions> transactions = [
-    Transactions(id: 1, title: "new shoes", amount: 2000, date: DateTime.now())
+    Transactions(id: 1, title: "New Shoes", amount: 2000, date: DateTime.now()),
+    Transactions(id: 2, title: "Laptop", amount: 6000, date: DateTime.now()),
   ];
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class _MyHomePage extends StatelessWidget {
           Container(
               width: double.infinity,
               child: Card(
-                  color: Colors.blue, child: Text("Chart!"), elevation: 5)),
+                  color: Colors.blue, child: Text("Chart!"), elevation: 8)),
           Column(
             // here we cant maually make cards becuse this would be changed by user so we will map transactions here and then print the data
             children: transactions.map((tx) {
@@ -50,13 +51,28 @@ class _MyHomePage extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 2)),
-                         padding: EdgeInsets.all(10), 
-                      child: Text((tx.amount).toString()),
+                      padding: EdgeInsets.all(10),
+                      child: Text((tx.amount).toString(),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.red)), 
                     ),
-                    Column(children: <Widget>[
-                      Text(tx.title),
-                      Text(tx.date.toString()),
-                    ])
+                    Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            tx.title,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.amber,
+                                fontSize: 15),
+                          ),
+                          Text(
+                            tx.date.toString(),
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                        ])
                   ],
                 ),
               );
