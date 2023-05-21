@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import './transactions.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
 }
 
 class _MyHomePage extends StatelessWidget {
+     List<Transactions>transactions = [Transactions(id: 1, title: "new shoes", amount: 2000, date: DateTime.now())];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +26,7 @@ class _MyHomePage extends StatelessWidget {
       // coloumn is a widget that takes as much width as much its children needs
       body: Column(
         // there are two type of allignment main axis and cross axis
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           // for container we can fix it our self 
