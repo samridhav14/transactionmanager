@@ -52,7 +52,9 @@ class _MyHomePage extends StatelessWidget {
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 2)),
                       padding: EdgeInsets.all(10),
-                      child: Text((tx.amount).toString(),
+                      child: Text(
+                           // special syntax for adding $sign string interpolation no need to use to strin and adding to string
+                       "₹${tx.amount}",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
@@ -62,7 +64,8 @@ class _MyHomePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            tx.title,
+                         
+                              tx.title,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.amber,
