@@ -39,6 +39,27 @@ class _MyHomePage extends StatelessWidget {
               width: double.infinity,
               child: Card(
                   color: Colors.blue, child: Text("Chart!"), elevation: 8)),
+                   Card(
+                    elevation: 5,
+                    // container is used to add padding which is not available in column
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      
+                      child:   Column
+                     (
+                       crossAxisAlignment:CrossAxisAlignment.end,
+                       children: 
+                     <Widget>[
+                      // here text feild is used to take user inputs  
+                          TextField(decoration: InputDecoration(labelText: 'Title'),),
+                          TextField(decoration: InputDecoration(labelText: 'Amount'),),
+                          ElevatedButton(onPressed:()=> Null, child: Text('Add transactions'), style: ElevatedButton.styleFrom(
+backgroundColor: Colors.purple,
+side: BorderSide(width:4, color: Colors.blue)
+),)
+                   ]
+                   ),)
+                   ),
           Column(
             // here we cant maually make cards becuse this would be changed by user so we will map transactions here and then print the data
             children: transactions.map((tx) {
