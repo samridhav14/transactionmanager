@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './transactions.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +31,7 @@ class _MyHomePage extends StatelessWidget {
       // coloumn is a widget that takes as much width as much its children needs
       body: Column(
         // there are two type of allignment main axis and cross axis
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        //  mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           // for container we can fix it our self
@@ -72,7 +73,9 @@ class _MyHomePage extends StatelessWidget {
                                 fontSize: 15),
                           ),
                           Text(
-                            tx.date.toString(),
+                            // we have added an intel pakage to formate this date and included this to our main.dart file this is an external pakage and now it is our dependency in pubspec.yaml
+                            // we can decide the pattetn also and also different inbuilt obj
+                           DateFormat.yMMMEd().format(tx.date),
                             style: TextStyle(color: Colors.grey),
                           ),
                         ])
