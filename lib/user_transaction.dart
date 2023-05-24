@@ -32,7 +32,8 @@ class _UserTransactionsState extends State<UserTransactions> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        NewTransaction(),
+        // here we have given a pointer of addnewtransaction to the constructor so that it wont get called automatically
+        NewTransaction(_addnewTransaction),
         TransactionList(UserTransactions),
       ],
     );

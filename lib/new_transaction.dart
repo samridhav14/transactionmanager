@@ -7,6 +7,9 @@ class NewTransaction extends StatelessWidget {
 // these properties are the solution of the message that was showing in on changed because these are final but to show changes to ui we need to make statefull widget
   final titleController = TextEditingController();
   final amountController = TextEditingController();
+  final Function addtx;
+  // we are using addtransaction wwhich is a private datamember of user_tansaction widget
+  NewTransaction(this.addtx);
   @override
   Widget build(BuildContext context) {
     return        Card(
@@ -36,7 +39,7 @@ class NewTransaction extends StatelessWidget {
                           // to check that on changed work or not
                           // print(amountIntput);
                           // print(titleInput);
-                          print(titleController.text);
+                         addtx(titleController.text,double.parse(amountController.text));
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.purple,
