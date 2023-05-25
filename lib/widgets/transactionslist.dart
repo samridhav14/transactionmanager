@@ -31,7 +31,8 @@ class TransactionList extends StatelessWidget {
                       padding: EdgeInsets.all(10),
                       child: Text(
                           // special syntax for adding $sign string interpolation no need to use to string and adding to string
-                          "₹${transaction[index].amount}",
+                          // it is used to fix decimal size to two digits
+                          "₹${transaction[index].amount.toStringAsFixed(2)}",
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 18,

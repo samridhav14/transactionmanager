@@ -10,6 +10,16 @@ class NewTransaction extends StatelessWidget {
   final Function addtx;
   // we are using addtransaction wwhich is a private datamember of user_tansaction widget
   NewTransaction(this.addtx);
+  // we are making a new method so that we need no to copy its code again and again we can simply call this function
+  void submitData(){
+    final enterdtitle=titleController.text;
+    final enterdamount=double.parse(amountController.text);
+    // if no input is recieved  simply go back we need valid input to go forward
+    if(enterdtitle.isEmpty || enterdamount<=0){
+      return;
+    }
+     addtx(enterdtitle,enterdamount);
+  }
   @override
   Widget build(BuildContext context) {
     return        Card(
@@ -31,15 +41,19 @@ class NewTransaction extends StatelessWidget {
                         decoration: InputDecoration(labelText: 'Amount'),
                         // onChanged: (value) {
                         //     amountIntput=value;
-                        // }
+                        // } 
                         controller: amountController,
+                        // use to fix the keyboard as number for amount
+                        keyboardType: TextInputType.number,
+                        // it is basically a way of writing whatever input comes we dont have any use of it
+                        onSubmitted:(_)=> submitData(),
                       ),
                       ElevatedButton(
                         onPressed: () {
                           // to check that on changed work or not
                           // print(amountIntput);
                           // print(titleInput);
-                         addtx(titleController.text,double.parse(amountController.text));
+                         submitData();
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.purple,
