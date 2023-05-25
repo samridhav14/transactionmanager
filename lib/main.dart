@@ -24,8 +24,10 @@ class MyHomePage extends StatelessWidget {
       ),
       // coloumn is a widget that takes as much width as much its children needs
       // we need to add SingleChildScrollView to the whole column not a single file but what we can do is we can bind transaction list to a container and fix its height and then add scrolling their  
-      body: SingleChildScrollView
-      (  child: Column(
+       // we have one more widget which we can use instead o f single child scrollable view it is listview is a widget that is column and by default singlechild scrolable
+      //SingleChildScrollView
+      body: SingleChildScrollView (
+        child:Column(
         // there are two type of allignment main axis and cross axis
         //  mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -41,7 +43,6 @@ class MyHomePage extends StatelessWidget {
           ),
         UserTransactions()
         ],
-      ),)
-    );
+      ),));
   }
 }
