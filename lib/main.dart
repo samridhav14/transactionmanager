@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './user_transaction.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -7,7 +8,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override 
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: MyHomePage(),
@@ -20,29 +21,38 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:  Text("Transaction Manager"),
+        title: Text("Transaction Manager"),
+        // here we are adding a button on the app baar to add new transactions
+        actions: <Widget>[
+          IconButton(onPressed: () => Null, icon: Icon(Icons.add))
+        ],
       ),
       // coloumn is a widget that takes as much width as much its children needs
-      // we need to add SingleChildScrollView to the whole column not a single file but what we can do is we can bind transaction list to a container and fix its height and then add scrolling their  
-       // we have one more widget which we can use instead o f single child scrollable view it is listview is a widget that is column and by default singlechild scrolable
+      // we need to add SingleChildScrollView to the whole column not a single file but what we can do is we can bind transaction list to a container and fix its height and then add scrolling their
+      // we have one more widget which we can use instead o f single child scrollable view it is listview is a widget that is column and by default singlechild scrolable
       //SingleChildScrollView
-      body: SingleChildScrollView (
-        child:Column(
-        // there are two type of allignment main axis and cross axis
-        //  mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          // for container we can fix it our self
+      body: SingleChildScrollView(
+        child: Column(
+          // there are two type of allignment main axis and cross axis
+          //  mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            // for container we can fix it our self
             SizedBox(
-            width: double.infinity,
-            child: Card(
-              color: Colors.blue,
-              elevation: 8,
-              child: Text("Chart!"),
+              width: double.infinity,
+              child: Card(
+                color: Colors.blue,
+                elevation: 8,
+                child: Text("Chart!"),
+              ),
             ),
-          ),
-        UserTransactions()
-        ],
-      ),));
+            UserTransactions()
+          ],
+        ),
+      ),
+      // this will add a floating button to add new transactions
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(onPressed:() {},child: Icon(Icons.add),),
+    );
   }
 }
