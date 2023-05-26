@@ -14,7 +14,7 @@ class NewTransaction extends StatelessWidget {
   void submitData(){
     final enterdtitle=titleController.text;
     final enterdamount=double.parse(amountController.text);
-    // if no input is recieved  simply go back we need valid input to go forward
+    // if no input is recieved  simply go back we need valid input to go forward.
     if(enterdtitle.isEmpty || enterdamount<=0){
       return;
     }
