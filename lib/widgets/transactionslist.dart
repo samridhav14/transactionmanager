@@ -10,12 +10,33 @@ class TransactionList extends StatelessWidget {
     return   
         Container(
           // we need to fix the height of container otherwise listview will not work fine
-          height: 500,
-        child:
+          height: 300,
+        child: transaction.isEmpty? 
+        // if no transactions are there we need to show some default messeage
+        Column(
+          children: [ Text('No Transactions Added yet',
+            style: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),),
+                //it will provide the space between text and image its a good alternative to container
+                SizedBox(height: 20,),
+                // we need to put image into a container and then we need to fix the size so that no overflow occur
+                Container(
+                  height:200,
+                  child: 
+                  Image.asset(
+                    'assets/images/default.png',
+                     fit: BoxFit.cover,
+                     )
+                     )
+                     ],
+        )
          // we have one more widget which we can use instead o f single child scrollable view it is listview is a widget that is column and by default singlechild scrolable
          // Listview is basically a widget with infinite height so we need to put in a container otherwise there will be a error
          // there are two type of list view one is direct and the other is by using builder constructor
-          ListView.builder(
+          :ListView.builder(
             // standered syntax
              itemBuilder: (context, index){
               return Card(

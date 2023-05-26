@@ -18,6 +18,13 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.green,
           // to set a theme colour that we have in our fonts folder
           fontFamily: 'Quicksand',
+          //  textTheme: ThemeData.light().textTheme.copyWith(
+          //       titleLarge: TextStyle(
+          //         fontFamily: 'OpenSans',
+          //         fontWeight: FontWeight.bold,
+          //         fontSize: 18,
+          //       ),
+          //     ),
           // app baar default theme
           appBarTheme: AppBarTheme(
             titleTextStyle:TextStyle(
@@ -40,9 +47,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transactions> _UserTransactions = [
-    Transactions(
-        id: '1', title: "New Shoes", amount: 2000, date: DateTime.now()),
-    Transactions(id: '2', title: "Laptop", amount: 6000, date: DateTime.now()),
+    // Transactions(
+    //     id: '1', title: "New Shoes", amount: 2000, date: DateTime.now()
+    //     ),
+    // Transactions(
+    //   id: '2', title: "Laptop", amount: 6000, date: DateTime.now()
+    //   ),
   ];
 
   void _addnewTransaction(String txtitle, double txamount) {
