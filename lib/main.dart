@@ -6,6 +6,7 @@ import './models/transactions.dart';
 void main() {
   runApp(MyApp());
 }
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,12 +16,14 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 class MyHomePage extends StatefulWidget {
   // String titleInput;
   // String amountInput;
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
+
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transactions> _UserTransactions = [
     Transactions(
@@ -46,7 +49,12 @@ class _MyHomePageState extends State<MyHomePage> {
       context: ctx,
       builder: (_) {
         // since we need to build this thing again and again as we press add button we need to make this a statefull widget
-        return NewTransaction(_addnewTransaction);
+        return GestureDetector(
+          // this on tap will help us that when we tap on the sheet it should not get closed
+            onTap: () {}, 
+            child: NewTransaction(_addnewTransaction),
+            // this behaviour will help us if we tap outside the sheet it will close
+            behavior: HitTestBehavior.opaque,);
       },
     );
   }
@@ -74,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             // for container we can fix it our self
-           const SizedBox(
+            const SizedBox(
               width: double.infinity,
               child: Card(
                 color: Colors.blue,
@@ -90,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // this will add a floating button to add new transactions
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        onPressed: ()=> _startAddnewTransaction(context),
+        onPressed: () => _startAddnewTransaction(context),
         child: Icon(Icons.add),
       ),
     );
