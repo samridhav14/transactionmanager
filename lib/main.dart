@@ -14,9 +14,18 @@ class MyApp extends StatelessWidget {
       title: 'Transaction Manager',
       // theme helps us to set a global theme for our application a combination of colour and text style etc
       theme: ThemeData(
-        // primary based on a primary colour but it adjust shades according to diff widgets all the default colurs will be purple
-        primarySwatch: Colors.green,
-      ),
+          // primary based on a primary colour but it adjust shades according to diff widgets all the default colurs will be purple
+          primarySwatch: Colors.green,
+          // to set a theme colour that we have in our fonts folder
+          fontFamily: 'Quicksand',
+          // app baar default theme
+          appBarTheme: AppBarTheme(
+            titleTextStyle:TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          )),
       home: MyHomePage(),
     );
   }
@@ -56,10 +65,11 @@ class _MyHomePageState extends State<MyHomePage> {
         // since we need to build this thing again and again as we press add button we need to make this a statefull widget
         return GestureDetector(
           // this on tap will help us that when we tap on the sheet it should not get closed
-            onTap: () {}, 
-            child: NewTransaction(_addnewTransaction),
-            // this behaviour will help us if we tap outside the sheet it will close
-            behavior: HitTestBehavior.opaque,);
+          onTap: () {},
+          child: NewTransaction(_addnewTransaction),
+          // this behaviour will help us if we tap outside the sheet it will close
+          behavior: HitTestBehavior.opaque,
+        );
       },
     );
   }
@@ -68,7 +78,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Transaction Manager"),
+        title: Text(
+          "Transaction Manager",
+        //  style: TextStyle(fontFamily: 'Open Sans'
+        ),
         // here we are adding a button on the app baar to add new transactions
         actions: <Widget>[
           IconButton(
