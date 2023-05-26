@@ -11,7 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter App',
+      title: 'Transaction Manager',
+      // theme helps us to set a global theme for our application a combination of colour and text style etc
+      theme: ThemeData(
+        // primary based on a primary colour but it adjust shades according to diff widgets all the default colurs will be purple
+        primarySwatch: Colors.green,
+      ),
       home: MyHomePage(),
     );
   }
