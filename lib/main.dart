@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import './new_transaction.dart';
 import './widgets/transactionslist.dart';
 import './models/transactions.dart';
-
+import './chart.dart';
 void main() {
   runApp(MyApp());
 }
@@ -54,6 +54,12 @@ class _MyHomePageState extends State<MyHomePage> {
     //   id: '2', title: "Laptop", amount: 6000, date: DateTime.now()
     //   ),
   ];
+  // list used get data of recent 7 transactions
+  List<Transactions> get _recentTransactions{
+    return  _UserTransactions.where((tx) {
+      return tx.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+    }).toList();
+  }
 
   void _addnewTransaction(String txtitle, double txamount) {
     final newTx = Transactions(
@@ -110,14 +116,16 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             // for container we can fix it our self
-            const SizedBox(
-              width: double.infinity,
-              child: Card(
-                color: Colors.blue,
-                elevation: 8,
-                child: Text("Chart!"),
-              ),
-            ),
+            // const SizedBox(
+            //   width: double.infinity,
+            //   child: Card(
+            //     color: Colors.blue,
+            //     elevation: 8,
+            //     child: Text("Chart!"),
+            //   ),
+            // ),
+            // this will be helping to make chart of our recent transaction
+            Chart(_UserTransactions),
             // UserTransactions()
             TransactionList(_UserTransactions),
           ],

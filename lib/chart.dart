@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import './widgets/transactionslist.dart';
+import 'models/transactions.dart';
+
 
 class Chart extends StatelessWidget {
-  final List<Transaction> recentTransactions;
+  final List<Transactions> recentTransactions;
 
   Chart(this.recentTransactions);
 
@@ -37,9 +39,9 @@ class Chart extends StatelessWidget {
   }
 }
 
-class Transaction {
-  DateTime date;
-  double amount;
+// class Transaction {
+//   DateTime date;
+//   double amount;
 
-  Transaction(this.date, this.amount);
-}
+//   Transaction(this.date, this.amount);
+// }
