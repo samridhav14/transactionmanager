@@ -6,9 +6,9 @@ import 'models/transactions.dart';
 
 class Chart extends StatelessWidget {
   final List<Transactions> recentTransactions;
-
+ // this  constructor will help us to get info of transaction of last seven days for our chart
   Chart(this.recentTransactions);
-
+  // this would provide the data for lable
   List<Map<String, dynamic>> get groupedTransactionValues {
     return List.generate(7, (index) {
       final weekDay = DateTime.now().subtract(Duration(days: index));
@@ -32,8 +32,12 @@ class Chart extends StatelessWidget {
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(20),
+      // card will a row of lables and amount of some day there will be 7 bars for 7 days
       child: Row(
-        children: <Widget>[],
+        children: groupedTransactionValues.map((data){
+         //   return Text(data['Day']+':'+ data['amount'].toString())
+        return Text()
+        },).toList()
       ),
     );
   }
