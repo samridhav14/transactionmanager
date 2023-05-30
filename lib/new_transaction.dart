@@ -60,6 +60,13 @@ class _NewTransactionState extends State<NewTransaction> {
                   // it is basically a way of writing whatever input comes we dont have any use of it
                   onSubmitted: (_) => submitData(),
                 ),
+                Container(
+                  height: 70,
+                  child: Row(children: <Widget>[
+                            Text('No Date Choosen!'),
+                          TextButton(onPressed: ()=>null, child: Text('Choose Date',style: TextStyle(color: Color.alphaBlend(Colors.purple,Colors.blue),fontWeight: FontWeight.bold)), )
+                  ],),
+                ),
                 ElevatedButton(
                   onPressed: () {
                     // to check that on changed work or not

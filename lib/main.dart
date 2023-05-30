@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
           //         fontSize: 18,
           //       ),
           //     ),
+          // button: TextStyle(color:colors.white),
           // app baar default theme
           appBarTheme: AppBarTheme(
             titleTextStyle:TextStyle(
