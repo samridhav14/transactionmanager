@@ -62,12 +62,12 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  void _addnewTransaction(String txtitle, double txamount) {
+  void _addnewTransaction(String txtitle, double txamount ,DateTime choosenDate) {
     final newTx = Transactions(
         id: DateTime.now().toString(),
         title: txtitle,
         amount: txamount,
-        date: DateTime.now());
+        date: choosenDate);
     setState(() {
       // we can not assign a new value to user transaction because it is a final entity what we can do is change the list
       _UserTransactions.add(newTx);

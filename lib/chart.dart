@@ -4,10 +4,9 @@ import 'package:intl/intl.dart';
 import './widgets/transactionslist.dart';
 import 'models/transactions.dart';
 
-
 class Chart extends StatelessWidget {
   final List<Transactions> recentTransactions;
- // this  constructor will help us to get info of transaction of last seven days for our chart
+  // this  constructor will help us to get info of transaction of last seven days for our chart
   Chart(this.recentTransactions);
   // this would provide the data for lable
   List<Map<String, dynamic>> get groupedTransactionValues {
@@ -22,19 +21,21 @@ class Chart extends StatelessWidget {
         }
       }
       return {
-        'day': DateFormat.E().format(weekDay).substring(0,1),
+        'day': DateFormat.E().format(weekDay).substring(0, 1),
         'amount': totalSum,
       };
     }).reversed.toList();
   }
+
 // geteer for percentage of spending
-double get totalSpending{
-  // fold helps to convert list to another logic
-  // initially sum will contain zero and add item[amount] every time
-  return groupedTransactionValues.fold(0.0,(sum,item){
-       return sum +item['amount'];
-  });
-}
+  double get totalSpending {
+    // fold helps to convert list to another logic
+    // initially sum will contain zero and add item[amount] every time
+    return groupedTransactionValues.fold(0.0, (sum, item) {
+      return sum + item['amount'];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -45,21 +46,25 @@ double get totalSpending{
       child: Padding(
         padding: EdgeInsets.all(10),
         child: Row(
-          // this will spread all the bars accross the area
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: groupedTransactionValues.map((data){
-           //   return Text(data['Day']+':'+ data['amount'].toString())
-           // string interpolation
-          //return Text("${data['Day']}: ${data['amount']}");
-          return Flexible(
-            // by this we are forcing to take default space for every bar we can use flex for selecting it individually by tight we are also insuring that every child cant change their size with time we can use expanded flexible withj flex.tight is same
-            fit: FlexFit.tight,
-            child: ChartBar(lable:data['day'],
-            spendingAmount: data['amount'],
-            spendingPctofTotal: totalSpending==0.0 ? 0.00 :(data['amount'] as double)/totalSpending,)
-            );
-          },).toList()
-        ),
+            // this will spread all the bars accross the area
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: groupedTransactionValues.map(
+              (data) {
+                //   return Text(data['Day']+':'+ data['amount'].toString())
+                // string interpolation
+                //return Text("${data['Day']}: ${data['amount']}");
+                return Flexible(
+                    // by this we are forcing to take default space for every bar we can use flex for selecting it individually by tight we are also insuring that every child cant change their size with time we can use expanded flexible withj flex.tight is same
+                    fit: FlexFit.tight,
+                    child: ChartBar(
+                      lable: data['day'],
+                      spendingAmount: data['amount'],
+                      spendingPctofTotal: totalSpending == 0.0
+                          ? 0.00
+                          : (data['amount'] as double) / totalSpending,
+                    ));
+              },
+            ).toList()),
       ),
     );
   }

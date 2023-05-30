@@ -88,9 +88,9 @@ class TransactionList extends StatelessWidget {
                 // );;
                 // to change the look of the the list we have made the change
                 return Card(
-                   elevation:5,
+                  elevation: 5,
                   margin: EdgeInsets.symmetric(
-                    vertical:8,
+                    vertical: 8,
                     horizontal: 5,
                   ),
                   // list tile is a special widget
@@ -99,19 +99,22 @@ class TransactionList extends StatelessWidget {
                     leading: CircleAvatar(
                       radius: 30,
                       child: Padding(
-                        padding: EdgeInsets.all(8),
+                          padding: EdgeInsets.all(8),
                           child: FittedBox(
                               child: Text('₹${transaction[index].amount}'))),
                     ),
-                    // this is the main title of our transaction 
+                    // this is the main title of our transaction
                     title: Text(
                       transaction[index].title,
-                      style: TextStyle( fontFamily: 'OpenSans',
-                     fontWeight: FontWeight.bold,
-                    fontSize: 18, ),
+                      style: TextStyle(
+                        fontFamily: 'OpenSans',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
                     ),
                     //this subtile is used to show the date of the transaction
-                    subtitle: Text(DateFormat.yMMMMd().format(transaction[index].date) ),
+                    subtitle: Text(
+                        DateFormat.yMMMMd().format(transaction[index].date)),
                   ),
                 );
               },
