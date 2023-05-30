@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './chart_bar.dart';
 import 'package:intl/intl.dart';
 import './widgets/transactionslist.dart';
 import 'models/transactions.dart';
@@ -26,7 +27,14 @@ class Chart extends StatelessWidget {
       };
     });
   }
-
+// geteer for percentage of spending
+double get totalSpending{
+  // fold helps to convert list to another logic
+  // initially sum will contain zero and add item[amount] every time
+  return groupedTransactionValues.fold(0.0,(sum,item){
+       return sum +item['amount'];
+  });
+}
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -37,7 +45,8 @@ class Chart extends StatelessWidget {
         children: groupedTransactionValues.map((data){
          //   return Text(data['Day']+':'+ data['amount'].toString())
          // string interpolation
-        return Text("${data['Day']}: ${data['amount']}");
+        //return Text("${data['Day']}: ${data['amount']}");
+        return ChartBar(lable:data['day'],spendingAmount: data['amount'],spendingPctofTotal: totalSpending==0.0 ? 0.00 :(data['amount'] as double)/totalSpending,);
         },).toList()
       ),
     );
