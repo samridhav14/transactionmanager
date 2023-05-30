@@ -25,7 +25,7 @@ class Chart extends StatelessWidget {
         'day': DateFormat.E().format(weekDay).substring(0,1),
         'amount': totalSum,
       };
-    });
+    }).reversed.toList();
   }
 // geteer for percentage of spending
 double get totalSpending{
@@ -52,7 +52,7 @@ double get totalSpending{
            // string interpolation
           //return Text("${data['Day']}: ${data['amount']}");
           return Flexible(
-            // by this we are forcing to take default space for every bar we can use flex for selecting it individually by tight we are also insuring that every child cant change their size with time
+            // by this we are forcing to take default space for every bar we can use flex for selecting it individually by tight we are also insuring that every child cant change their size with time we can use expanded flexible withj flex.tight is same
             fit: FlexFit.tight,
             child: ChartBar(lable:data['day'],
             spendingAmount: data['amount'],

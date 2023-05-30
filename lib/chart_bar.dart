@@ -15,8 +15,12 @@ class ChartBar extends StatelessWidget {
     Column(
       children: <Widget>[
         // fittedbox fix the size of the amount and fit it in given size
-        FittedBox
-        (child: Text('₹${spendingAmount.toStringAsFixed(0)}')),
+        // we have added a container to fix the height of the amount we are showing and the bar
+        Container(
+          height: 20,
+          child: FittedBox
+          (child: Text('₹${spendingAmount.toStringAsFixed(0)}')),
+        ),
         SizedBox(height: 4,),
         Container(
           height: 60,
