@@ -38,16 +38,28 @@ double get totalSpending{
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 6,
+      elevation: 10,
       margin: EdgeInsets.all(20),
       // card will a row of lables and amount of some day there will be 7 bars for 7 days
-      child: Row(
-        children: groupedTransactionValues.map((data){
-         //   return Text(data['Day']+':'+ data['amount'].toString())
-         // string interpolation
-        //return Text("${data['Day']}: ${data['amount']}");
-        return ChartBar(lable:data['day'],spendingAmount: data['amount'],spendingPctofTotal: totalSpending==0.0 ? 0.00 :(data['amount'] as double)/totalSpending,);
-        },).toList()
+      // we have added a container to fix padding of chart if our only goal is to do padding we can directly use padding widget
+      child: Padding(
+        padding: EdgeInsets.all(10),
+        child: Row(
+          // this will spread all the bars accross the area
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: groupedTransactionValues.map((data){
+           //   return Text(data['Day']+':'+ data['amount'].toString())
+           // string interpolation
+          //return Text("${data['Day']}: ${data['amount']}");
+          return Flexible(
+            // by this we are forcing to take default space for every bar we can use flex for selecting it individually by tight we are also insuring that every child cant change their size with time
+            fit: FlexFit.tight,
+            child: ChartBar(lable:data['day'],
+            spendingAmount: data['amount'],
+            spendingPctofTotal: totalSpending==0.0 ? 0.00 :(data['amount'] as double)/totalSpending,)
+            );
+          },).toList()
+        ),
       ),
     );
   }

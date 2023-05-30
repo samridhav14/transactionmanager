@@ -14,7 +14,9 @@ class ChartBar extends StatelessWidget {
     // these will be the ingridients of bars of everyday first we will have spending amount then a bar then alable for it
     Column(
       children: <Widget>[
-        Text('₹${spendingAmount.toStringAsFixed(0)}'),
+        // fittedbox fix the size of the amount and fit it in given size
+        FittedBox
+        (child: Text('₹${spendingAmount.toStringAsFixed(0)}')),
         SizedBox(height: 4,),
         Container(
           height: 60,
