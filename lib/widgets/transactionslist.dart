@@ -86,13 +86,16 @@ class TransactionList extends StatelessWidget {
                 //     ],
                 //   ),
                 // );;
+                // to change the look of the the list we have made the change
                 return Card(
                    elevation:5,
                   margin: EdgeInsets.symmetric(
                     vertical:8,
                     horizontal: 5,
                   ),
+                  // list tile is a special widget
                   child: ListTile(
+                    // this will show the price of items in a circular avatar with app theme
                     leading: CircleAvatar(
                       radius: 30,
                       child: Padding(
@@ -100,12 +103,14 @@ class TransactionList extends StatelessWidget {
                           child: FittedBox(
                               child: Text('₹${transaction[index].amount}'))),
                     ),
+                    // this is the main title of our transaction 
                     title: Text(
                       transaction[index].title,
                       style: TextStyle( fontFamily: 'OpenSans',
                      fontWeight: FontWeight.bold,
                     fontSize: 18, ),
                     ),
+                    //this subtile is used to show the date of the transaction
                     subtitle: Text(DateFormat.yMMMMd().format(transaction[index].date) ),
                   ),
                 );
