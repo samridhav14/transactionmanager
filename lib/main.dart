@@ -139,7 +139,8 @@ class _MyHomePageState extends State<MyHomePage> {
             // this will be helping to make chart of our recent transaction
             Chart(_UserTransactions),
             // UserTransactions()
-            Expanded(child: TransactionList(_UserTransactions,_deleteTransaction)),
+            // we cant use expanded because it have listview in it it will take infinite height
+            TransactionList(_UserTransactions,_deleteTransaction),
           ],
         ),
       ),
