@@ -4,12 +4,13 @@ import 'package:intl/intl.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transactions> transaction;
-  TransactionList(this.transaction);
+  final Function deletetx;
+  TransactionList(this.transaction,this.deletetx);
   @override
   Widget build(BuildContext context) {
     return Container(
       // we need to fix the height of container otherwise listview will not work fine
-      height: 300,
+      height: 500,
       child: transaction.isEmpty
           ?
           // if no transactions are there we need to show some default messeage
@@ -29,7 +30,7 @@ class TransactionList extends StatelessWidget {
                 ),
                 // we need to put image into a container and then we need to fix the size so that no overflow occur
                 Container(
-                    height: 200,
+                    height: 300,
                     child: Image.asset(
                       'assets/images/default.png',
                       fit: BoxFit.cover,
@@ -115,6 +116,14 @@ class TransactionList extends StatelessWidget {
                     //this subtile is used to show the date of the transaction
                     subtitle: Text(
                         DateFormat.yMMMMd().format(transaction[index].date)),
+                        // trailing provides us a icon button of deleting the transaction
+                    trailing: IconButton(
+                      icon: Icon(Icons.delete),
+                      color: Colors.red,
+                      onPressed: (){
+                        deletetx(transaction[index].id);
+                        },
+                    ),
                   ),
                 );
               },

@@ -48,12 +48,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transactions> _UserTransactions = [
-    Transactions(
-        id: '1', title: "New Shoes", amount: 2000, date: DateTime.now()
-        ),
-    Transactions(
-      id: '2', title: "Laptop", amount: 6000, date: DateTime.now()
-      ),
+    // Transactions(
+    //     id: '1', title: "New Shoes", amount: 2000, date: DateTime.now()
+    //     ),
+    // Transactions(
+    //   id: '2', title: "Laptop", amount: 6000, date: DateTime.now()
+    //   ),
   ];
   // list used get data of recent 7 transactions
   List<Transactions> get _recentTransactions{
@@ -72,6 +72,17 @@ class _MyHomePageState extends State<MyHomePage> {
       // we can not assign a new value to user transaction because it is a final entity what we can do is change the list
       _UserTransactions.add(newTx);
     });
+  }
+  // to delete a transaction
+  void _deleteTransaction(String id){
+         setState(() {
+           _UserTransactions.removeWhere((tx){
+              if(tx.id==id){
+                return true;
+              }
+              return false;
+           });
+         });
   }
 
   // it start the process to add new transaction
@@ -128,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
             // this will be helping to make chart of our recent transaction
             Chart(_UserTransactions),
             // UserTransactions()
-            TransactionList(_UserTransactions),
+            Expanded(child: TransactionList(_UserTransactions,_deleteTransaction)),
           ],
         ),
       ),
