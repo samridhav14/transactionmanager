@@ -10,6 +10,7 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // we need to fix the height of container otherwise listview will not work fine
+      // we need to set height dynamically we will use mediaquery but we had already done it in main dart
       height: 500,
       child: transaction.isEmpty
           ?

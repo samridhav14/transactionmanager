@@ -104,8 +104,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    // we are creating it in a final variable  because it can be anywhere now
+    final appBar=AppBar(
         title: Text(
           "Transaction Manager",
         //  style: TextStyle(fontFamily: 'Open Sans'
@@ -116,7 +116,9 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () => _startAddnewTransaction(context),
               icon: Icon(Icons.add))
         ],
-      ),
+      );
+    return Scaffold(
+      appBar:appBar,
       // coloumn is a widget that takes as much width as much its children needs
       // we need to add SingleChildScrollView to the whole column not a single file but what we can do is we can bind transaction list to a container and fix its height and then add scrolling their
       // we have one more widget which we can use instead o f single child scrollable view it is listview is a widget that is column and by default singlechild scrolable
@@ -137,10 +139,12 @@ class _MyHomePageState extends State<MyHomePage> {
             //   ),
             // ),
             // this will be helping to make chart of our recent transaction
-            Chart(_UserTransactions),
+            // here basically we are subtracting the height of the app bar and status bar from total available height and then giving 40% of it to chart 
+            Container(height:(MediaQuery.of(context).size.height-appBar.preferredSize.height-MediaQuery.of(context).padding.top) *0.4 , child:Chart(_UserTransactions),),
             // UserTransactions()
             // we cant use expanded because it have listview in it it will take infinite height
-            TransactionList(_UserTransactions,_deleteTransaction),
+             Container(height:(MediaQuery.of(context).size.height-appBar.preferredSize.height-MediaQuery.of(context).padding.top) *0.6 , child:TransactionList(_UserTransactions,_deleteTransaction),),
+            
           ],
         ),
       ),
